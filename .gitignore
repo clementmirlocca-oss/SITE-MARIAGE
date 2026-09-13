@@ -1,0 +1,9 @@
+# macOS
+.DS_Store
+
+# Fichiers de travail : ce depot ne contient que le site publie
+originaux/
+comparaison/
+*.bak
+*.bak2
+*.dc.html
