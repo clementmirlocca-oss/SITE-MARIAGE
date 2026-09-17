@@ -289,6 +289,22 @@
   .h16:hover { background:#ffffff !important; }
   .h17:hover { border-color:#ffffff !important; }
   .h18:hover { background:#ffffff !important; }
+
+  /* ===== REFONTE (lead-gen) — réutilise le design system existant ===== */
+  .sr-only { position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap; }
+  .nav-cta { white-space:nowrap; }
+  @media (max-width: 700px) {
+    .nav-cta { padding:9px 14px !important; font-size:10.5px !important; letter-spacing:0.12em !important; }
+    [data-nav-links] { gap:12px; }
+  }
+  .btn-row { display:flex;gap:14px;flex-wrap:wrap;justify-content:center;align-items:center; }
+  .video-16-9 { position:relative;aspect-ratio:16/9;overflow:hidden;background:#000; }
+  .video-16-9 iframe { position:absolute;inset:0;width:100%;height:100%;border:0; }
+  .contact-field { font-family:var(--font-body);border-radius:0; }
+  .contact-field:focus { border-color:#ffffff !important; }
+  select.contact-field { -webkit-appearance:none;appearance:none;cursor:pointer;padding-right:28px !important;background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%23ffffff' stroke-opacity='.7' stroke-width='1.2'/%3E%3C/svg%3E") !important;background-repeat:no-repeat !important;background-position:right 4px center !important; }
+  select.contact-field option { color:#0a0a0a;background:#ffffff; }
+  select.contact-field.is-empty { color:#999999 !important; }
 </style>
 </head>
 <body>
@@ -302,7 +318,7 @@
       <a href="#apropos" style="font-size:12.5px;text-transform:uppercase;letter-spacing:0.22em;color:#ffffff;font-weight:400;" class="nav-link">À propos</a>
       <a href="#film" style="font-size:12.5px;text-transform:uppercase;letter-spacing:0.22em;color:#ffffff;font-weight:400;" class="nav-link">Film</a>
       <a href="#prestations" style="font-size:12.5px;text-transform:uppercase;letter-spacing:0.22em;color:#ffffff;font-weight:400;" class="nav-link">Prestations</a>
-      <a href="#contact" style="border:1px solid rgba(255,255,255,0.55);padding:10px 20px;font-size:11.5px;text-transform:uppercase;letter-spacing:0.22em;color:#ffffff;transition:all .35s ease;" class="nav-cta h1">Me contacter</a>
+      <a href="#contact" style="border:1px solid #ffffff;background:#ffffff;padding:11px 20px;font-size:11.5px;text-transform:uppercase;letter-spacing:0.22em;color:#0a0a0a;font-weight:500;transition:all .35s ease;" class="nav-cta h2">Vérifier ma date ↗</a>
     </div>
     <button id="nav-toggle" aria-label="Menu" style="display:none;background:none;border:none;cursor:pointer;padding:8px;width:40px;height:40px;align-items:center;justify-content:center;flex-direction:column;gap:5px;">
       <span data-bar="1" style="display:block;width:22px;height:1px;background:#ffffff;transition:all .3s ease;"></span>
@@ -311,10 +327,10 @@
   </nav>
 
   <div id="mobile-menu" style="display:none;position:fixed;inset:0;z-index:99;background:#0a0a0a;flex-direction:column;align-items:center;justify-content:center;gap:36px;">
+    <a href="#contact" class="mobile-menu-link h2" style="border:1px solid #ffffff;background:#ffffff;color:#0a0a0a;padding:16px 34px;font-size:12px;text-transform:uppercase;letter-spacing:0.22em;font-weight:500;transition:all .35s ease;">Vérifier ma date ↗</a>
     <a href="#apropos" class="mobile-menu-link" style="font-family:var(--font-heading);font-size:28px;color:#ffffff;">À propos</a>
     <a href="#film" class="mobile-menu-link" style="font-family:var(--font-heading);font-size:28px;color:#ffffff;">Film</a>
     <a href="#prestations" class="mobile-menu-link" style="font-family:var(--font-heading);font-size:28px;color:#ffffff;">Prestations</a>
-    <a href="#contact" class="mobile-menu-link" style="font-family:var(--font-heading);font-size:28px;color:#ffffff;">Contact</a>
   </div>
 
 <!-- HERO -->
@@ -325,9 +341,15 @@
     <div style="position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(180deg, rgba(10,10,10,0.48) 0%, rgba(10,10,10,0.28) 35%, rgba(10,10,10,0.5) 100%);"></div>
     <div style="position:relative;z-index:2;width:100%;padding:0 clamp(24px,5vw,64px);pointer-events:none;display:flex;justify-content:center;">
       <div data-reveal="" style="max-width:900px;margin:0 auto;display:flex;flex-direction:column;align-items:center;text-align:center;">
-        <div style="font-size:12px;text-transform:uppercase;letter-spacing:0.34em;color:#ffffff;font-weight:600;margin-bottom:26px;line-height:1.7;">Photographe &amp; Vidéaste de Mariage — Provence-Alpes-Côte d'Azur</div>
-        <h1 style="font-family:var(--font-heading);font-weight:600;font-size:clamp(3.4rem,11vw,10rem);line-height:0.92;color:#ffffff;margin:0;letter-spacing:-0.01em;">Perpette Wedding<span style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;"> — Photographe &amp; Vidéaste de Mariage en PACA</span></h1>
-        <a href="#prestations" style="pointer-events:auto;display:inline-block;margin-top:36px;border:1px solid #ffffff;background:#ffffff;color:#0a0a0a;padding:16px 34px;font-size:11.5px;text-transform:uppercase;letter-spacing:0.22em;transition:all .35s ease;" class="h2">Découvrir mes formules</a>
+        <div style="font-size:12px;text-transform:uppercase;letter-spacing:0.34em;color:#ffffff;font-weight:600;margin-bottom:26px;line-height:1.7;">Provence-Alpes-Côte d'Azur · Marseille, Aix-en-Provence, Cassis, Avignon</div>
+        <h1 style="font-family:var(--font-heading);font-weight:600;line-height:0.92;color:#ffffff;margin:0;letter-spacing:-0.01em;">
+          <span style="display:block;font-size:clamp(1.5rem,3.2vw,2.6rem);font-weight:500;font-style:italic;letter-spacing:0;line-height:1.2;margin-bottom:18px;">Photographe &amp; Vidéaste de Mariage en Provence</span><span class="sr-only"> — </span><span style="display:block;font-size:clamp(3.4rem,11vw,10rem);">Perpette Wedding</span>
+        </h1>
+        <p style="font-weight:300;font-size:clamp(15px,1.6vw,18px);line-height:1.75;color:rgba(255,255,255,0.85);max-width:640px;margin:30px auto 0;">Un mariage se déroule vite. Je reste en retrait pendant les temps forts — cérémonie, discours, ouverture de bal — pour que vos photos et votre film restent fidèles à ce qui s'est passé, sans rien rejouer après coup.</p>
+        <div class="btn-row" style="margin-top:36px;pointer-events:auto;">
+          <a href="#contact" style="display:inline-block;border:1px solid #ffffff;background:#ffffff;color:#0a0a0a;padding:16px 34px;font-size:11.5px;text-transform:uppercase;letter-spacing:0.22em;font-weight:500;transition:all .35s ease;" class="h2">Vérifier ma date ↗</a>
+          <a href="#prestations" style="display:inline-block;border:1px solid rgba(255,255,255,0.7);background:transparent;color:#ffffff;padding:16px 34px;font-size:11.5px;text-transform:uppercase;letter-spacing:0.22em;transition:all .35s ease;" class="h1">Voir les formules</a>
+        </div>
       </div>
     </div>
     <div class="hero-scroll-cue" style="position:absolute;bottom:32px;left:50%;transform:translateX(-50%);z-index:2;display:flex;flex-direction:column;align-items:center;gap:10px;pointer-events:none;">
@@ -335,14 +357,6 @@
       <span style="display:block;width:1px;height:46px;background:linear-gradient(#ffffff,transparent);"></span>
     </div>
   </header>
-
-  <!-- INTRO / MANIFESTO -->
-  <section style="padding:clamp(80px,12vw,160px) clamp(24px,5vw,64px);background:#ffffff;">
-    <div data-reveal="" style="max-width:960px;margin:0 auto;text-align:center;">
-      <div style="font-size:12px;text-transform:uppercase;letter-spacing:0.28em;color:var(--accent);font-weight:500;margin-bottom:34px;">— Votre histoire, sublimée —</div>
-      <p style="font-family:var(--font-body);font-weight:400;font-size:clamp(1.5rem,3.4vw,2.6rem);line-height:1.32;color:#0a0a0a;margin:0;letter-spacing:-0.005em;">Un mariage se déroule vite. Mon rôle est de rester en retrait pendant les temps forts — cérémonie, discours, ouverture de bal — pour que les <span style="font-style:italic;color:var(--accent);">photos et le film restent fidèles</span> à ce qui s'est passé, sans rien rejouer après coup.</p>
-    </div>
-  </section>
 
   <!-- À PROPOS -->
   <section id="apropos" style="padding:clamp(40px,6vw,80px) clamp(24px,5vw,64px) clamp(80px,12vw,150px);background:#ffffff;">
@@ -360,10 +374,11 @@
         <p style="font-weight:300;font-size:17px;line-height:1.85;color:#333333;margin:0 auto 20px;max-width:520px;">Je m'appelle Clément. Basé à Marseille, j'interviens en priorité sur Aix-en-Provence, Salon-de-Provence, Lançon-de-Provence et Martigues, et plus largement sur l'ensemble de la région Provence-Alpes-Côte d'Azur : calanques de Cassis, Luberon, Avignon, le Var et les Alpes-Maritimes. J'opère la photo ou la vidéo en solo ; pour la formule combinant les deux, un second opérateur est présent pour une captation simultanée.</p>
         <p style="font-weight:300;font-size:17px;line-height:1.85;color:#333333;margin:0 auto 34px;max-width:520px;">Le déroulé est le même à chaque mariage : présence dès les préparatifs, couverture continue jusqu'à l'ouverture du bal, aucune scène reconstituée pour la caméra.</p>
         <div style="display:flex;justify-content:center;gap:clamp(28px,4vw,56px);flex-wrap:wrap;">
-          <div><div style="font-family:var(--font-heading);font-size:38px;color:var(--accent);">Depuis 2019</div><div style="font-size:11px;text-transform:uppercase;letter-spacing:0.2em;color:#767676;margin-top:6px;">D'expérience</div></div>
-          <div><div style="font-family:var(--font-heading);font-size:38px;color:var(--accent);">+ de 10 000</div><div style="font-size:11px;text-transform:uppercase;letter-spacing:0.2em;color:#767676;margin-top:6px;">Photos livrées</div></div>
-          <div><div style="font-family:var(--font-heading);font-size:38px;color:var(--accent);">100%</div><div style="font-size:11px;text-transform:uppercase;letter-spacing:0.2em;color:#767676;margin-top:6px;">Sur-mesure</div></div>
+          <div><div style="font-family:var(--font-heading);font-size:38px;color:var(--accent);">100%</div><div style="font-size:11px;text-transform:uppercase;letter-spacing:0.2em;color:#767676;margin-top:6px;line-height:1.6;">Sur-mesure,<br>aucune scène rejouée</div></div>
+          <div><div style="font-family:var(--font-heading);font-size:38px;color:var(--accent);">20</div><div style="font-size:11px;text-transform:uppercase;letter-spacing:0.2em;color:#767676;margin-top:6px;line-height:1.6;">Dates maximum<br>par an</div></div>
+          <div><div style="font-family:var(--font-heading);font-size:38px;color:var(--accent);">10 jours</div><div style="font-size:11px;text-transform:uppercase;letter-spacing:0.2em;color:#767676;margin-top:6px;line-height:1.6;">Livraison<br>du teaser</div></div>
         </div>
+        <p style="font-style:italic;font-weight:300;font-size:14.5px;line-height:1.7;color:#767676;margin:30px auto 0;max-width:520px;">Je limite volontairement le nombre de mariages par saison pour garantir la même attention à chacun — les dates de 2027 partent tôt.</p>
       </div>
     </div></section>
 
@@ -395,6 +410,11 @@
         <img class="slot-img" src="assets/img/galerie-8.webp" alt="Préparatifs de la mariée avec ses demoiselles d’honneur, en noir et blanc" loading="lazy" decoding="async">
       </div>
     </div>
+    <div data-reveal="" hidden style="text-align:center;padding:clamp(40px,5vw,64px) clamp(24px,5vw,64px) clamp(48px,6vw,80px);">
+      <!-- masqué en attendant l'URL du reportage complet : ajouter le href puis retirer l'attribut "hidden" pour le republier -->
+      <a href="[URL de la galerie complète]" target="_blank" rel="noopener" style="display:inline-block;border:1px solid rgba(10,10,10,0.5);color:#0a0a0a;padding:15px 30px;font-size:11px;text-transform:uppercase;letter-spacing:0.22em;font-weight:500;transition:all .3s;" class="h5">Voir un reportage complet ↗</a>
+      <p style="font-weight:300;font-size:14px;line-height:1.7;color:#767676;margin:16px auto 0;max-width:460px;">Un mariage entier, des préparatifs à la soirée — pas seulement les meilleures photos.</p>
+    </div>
   </section>
 
   <!-- FILM / BANDE-ANNONCE -->
@@ -404,15 +424,13 @@
         <div style="font-size:12px;text-transform:uppercase;letter-spacing:0.28em;color:#ffffff;font-weight:500;margin-bottom:22px;">Film de mariage</div>
         <h2 style="font-family:var(--font-heading);font-weight:600;font-size:clamp(2.2rem,5vw,4rem);line-height:1.05;color:#ffffff;margin:0 0 44px;">Film de mariage <span style="font-weight:600;color:#ffffff;">cinématique</span></h2>
       </div>
-      <div data-reveal="" id="film-frame" style="position:relative;aspect-ratio:16/9;border:1px solid rgba(255,255,255,0.14);">
-        <!-- poster du film : image de fond CSS ci-dessous -->
-        <div style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; pointer-events: none; background: url(&quot;assets/img/film-poster.webp&quot;) center / cover no-repeat">
-          <button id="film-play" style="pointer-events:auto;width:clamp(78px,9vw,110px);height:clamp(78px,9vw,110px);border-radius:50%;border:1px solid rgba(255,255,255,0.7);background:rgba(10,10,10,0.3);backdrop-filter:blur(3px);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .4s ease;" class="h3">
-            <span style="display:block;width:0;height:0;border-top:11px solid transparent;border-bottom:11px solid transparent;border-left:19px solid #ffffff;margin-left:5px;"></span>
-          </button>
-        </div>
+      <div data-reveal="" class="video-16-9" style="border:1px solid rgba(255,255,255,0.14);">
+        <iframe src="https://www.youtube-nocookie.com/embed/HgUfXMNPcDk?rel=0" title="Teaser de film de mariage — Perpette Wedding" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
       </div>
-      <p data-reveal="" style="font-weight:300;font-size:15px;color:rgba(255,255,255,0.62);margin:26px 0 0;letter-spacing:0.02em;">Films de 4 à 6 minutes montés à partir du son direct de la cérémonie et des discours. Un teaser d'une minute est livré sous 10 jours pour un partage immédiat, avant la version longue.</p>
+      <p data-reveal="" style="font-weight:300;font-size:15px;line-height:1.8;color:rgba(255,255,255,0.62);margin:26px auto 0;letter-spacing:0.02em;max-width:720px;">Films de 4 à 6 minutes montés à partir du son direct de la cérémonie et des discours — vos voix, pas une musique plaquée. Un teaser d'une minute est livré sous 10 jours pour le partager avec vos proches, avant le film complet sous 4 à 6 semaines.</p>
+      <div data-reveal="" style="margin-top:34px;">
+        <a href="#contact" style="display:inline-block;border:1px solid #ffffff;background:#ffffff;color:#0a0a0a;padding:16px 34px;font-size:11.5px;text-transform:uppercase;letter-spacing:0.22em;font-weight:500;transition:all .35s ease;" class="h2">Vérifier ma date ↗</a>
+      </div>
     </div>
   </section>
 
@@ -451,15 +469,18 @@
                   </li>
                               </ul>
             </div>
-            <a href="#contact" style="margin-top:34px;text-align:center;border:1px solid rgba(10,10,10,0.5);color:#0a0a0a;padding:15px;font-size:11px;text-transform:uppercase;letter-spacing:0.22em;font-weight:500;transition:all .3s;">Me contacter</a>
+            <a href="#contact" style="margin-top:34px;text-align:center;border:1px solid rgba(10,10,10,0.5);color:#0a0a0a;padding:15px;font-size:11px;text-transform:uppercase;letter-spacing:0.22em;font-weight:500;line-height:1.3;transition:all .3s;" class="h5">Demander un devis<span style="display:block;font-size:10px;letter-spacing:0.16em;opacity:0.65;margin-top:5px;">— réponse sous 48h</span></a>
           </div>
                   <div style="display:flex;flex-direction:column;justify-content:space-between;padding:44px 34px;background:#0a0a0a;transition:transform .5s ease;min-height:100%;transform:translateY(-6px);">
             <div>
               <div style="font-size:11px;text-transform:uppercase;letter-spacing:0.24em;color:#ffffff;font-weight:500;margin-bottom:8px;">Signature</div>
               <h3 style="font-family:var(--font-heading);font-weight:600;font-size:28px;margin:0 0 18px;color:#ffffff;">Duo Photo &amp; Vidéo</h3>
-              <div style="display:flex;align-items:baseline;gap:8px;padding-bottom:24px;margin-bottom:24px;border-bottom:1px solid rgba(255,255,255,0.18);">
-                <span style="font-size:11px;text-transform:uppercase;letter-spacing:0.16em;color:rgba(255,255,255,0.5);">à partir de</span>
-                <span style="font-family:var(--font-heading);font-size:34px;color:#ffffff;">2 500 €</span>
+              <div style="padding-bottom:24px;margin-bottom:24px;border-bottom:1px solid rgba(255,255,255,0.18);">
+                <div style="display:flex;align-items:baseline;gap:8px;">
+                  <span style="font-size:11px;text-transform:uppercase;letter-spacing:0.16em;color:rgba(255,255,255,0.5);">à partir de</span>
+                  <span style="font-family:var(--font-heading);font-size:34px;color:#ffffff;">2 500 €</span>
+                </div>
+                <div style="font-weight:300;font-size:13px;line-height:1.5;color:rgba(255,255,255,0.62);margin-top:6px;">au lieu de <s>2 800 €</s> en formules séparées</div>
               </div>
               <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:14px;">
                   <li style="display:flex;gap:12px;align-items:flex-start;font-weight:300;font-size:14.5px;line-height:1.5;color:rgba(255,255,255,0.82);">
@@ -472,11 +493,11 @@
                   </li>
                                   <li style="display:flex;gap:12px;align-items:flex-start;font-weight:300;font-size:14.5px;line-height:1.5;color:rgba(255,255,255,0.82);">
                     <span style="color:#ffffff;font-size:12px;margin-top:3px;">✦</span>
-                    <span>Priorité de date sur le calendrier</span>
+                    <span>Priorité de date : les deux opérateurs sont bloqués pour vous, la date est garantie en premier</span>
                   </li>
                               </ul>
             </div>
-            <a href="#contact" style="margin-top:34px;text-align:center;background:#0a0a0a;color:#0a0a0a;padding:15px;font-size:11px;text-transform:uppercase;letter-spacing:0.22em;font-weight:500;transition:opacity .3s;">Me contacter</a>
+            <a href="#contact" style="margin-top:34px;text-align:center;border:1px solid #ffffff;background:#ffffff;color:#0a0a0a;padding:15px;font-size:11px;text-transform:uppercase;letter-spacing:0.22em;font-weight:500;line-height:1.3;transition:all .35s ease;" class="h2">Demander un devis<span style="display:block;font-size:10px;letter-spacing:0.16em;opacity:0.65;margin-top:5px;">— réponse sous 48h</span></a>
           </div>
                   <div style="display:flex;flex-direction:column;justify-content:space-between;padding:38px 32px;background:#f5f5f5;border:1px solid rgba(10,10,10,0.1);transition:transform .5s ease;min-height:100%;">
             <div>
@@ -501,7 +522,7 @@
                   </li>
                               </ul>
             </div>
-            <a href="#contact" style="margin-top:34px;text-align:center;border:1px solid rgba(10,10,10,0.5);color:#0a0a0a;padding:15px;font-size:11px;text-transform:uppercase;letter-spacing:0.22em;font-weight:500;transition:all .3s;">Me contacter</a>
+            <a href="#contact" style="margin-top:34px;text-align:center;border:1px solid rgba(10,10,10,0.5);color:#0a0a0a;padding:15px;font-size:11px;text-transform:uppercase;letter-spacing:0.22em;font-weight:500;line-height:1.3;transition:all .3s;" class="h5">Demander un devis<span style="display:block;font-size:10px;letter-spacing:0.16em;opacity:0.65;margin-top:5px;">— réponse sous 48h</span></a>
           </div>
               </div>
       <p data-reveal="" style="text-align:center;font-weight:300;font-size:14px;color:#767676;margin:clamp(32px,4vw,48px) 0 0;">Formules modulables (durée, album, drone, second opérateur) · devis détaillé sous 48h · déplacement PACA inclus, France entière et international sur devis</p>
@@ -518,22 +539,22 @@
       <div data-steps="" style="display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(20px,3vw,44px);">
           <div data-reveal="" style="border-top:1px solid rgba(255,255,255,0.18);padding-top:24px;">
             <div style="font-family:var(--font-heading);font-size:44px;color:#ffffff;line-height:1;margin-bottom:18px;">01</div>
-            <h4 style="font-family:var(--font-heading);font-weight:600;font-size:21px;margin:0 0 12px;color:#ffffff;">Premier échange</h4>
+            <h3 style="font-family:var(--font-heading);font-weight:600;font-size:21px;margin:0 0 12px;color:#ffffff;">Premier échange</h3>
             <p style="font-weight:300;font-size:14.5px;line-height:1.7;color:rgba(255,255,255,0.62);margin:0;">En visio ou en présentiel, pour cerner la date, le lieu et le déroulé de votre journée.</p>
           </div>
                   <div data-reveal="" style="border-top:1px solid rgba(255,255,255,0.18);padding-top:24px;">
             <div style="font-family:var(--font-heading);font-size:44px;color:#ffffff;line-height:1;margin-bottom:18px;">02</div>
-            <h4 style="font-family:var(--font-heading);font-weight:600;font-size:21px;margin:0 0 12px;color:#ffffff;">Devis et réservation</h4>
+            <h3 style="font-family:var(--font-heading);font-weight:600;font-size:21px;margin:0 0 12px;color:#ffffff;">Devis et réservation</h3>
             <p style="font-weight:300;font-size:14.5px;line-height:1.7;color:rgba(255,255,255,0.62);margin:0;">Devis détaillé sous 48h, date bloquée à la signature du contrat et au versement d’un acompte de 30%.</p>
           </div>
                   <div data-reveal="" style="border-top:1px solid rgba(255,255,255,0.18);padding-top:24px;">
             <div style="font-family:var(--font-heading);font-size:44px;color:#ffffff;line-height:1;margin-bottom:18px;">03</div>
-            <h4 style="font-family:var(--font-heading);font-weight:600;font-size:21px;margin:0 0 12px;color:#ffffff;">Le jour J</h4>
+            <h3 style="font-family:var(--font-heading);font-weight:600;font-size:21px;margin:0 0 12px;color:#ffffff;">Le jour J</h3>
             <p style="font-weight:300;font-size:14.5px;line-height:1.7;color:rgba(255,255,255,0.62);margin:0;">Présence continue de l’arrivée des préparatifs jusqu’à l’ouverture du bal.</p>
           </div>
                   <div data-reveal="" style="border-top:1px solid rgba(255,255,255,0.18);padding-top:24px;">
             <div style="font-family:var(--font-heading);font-size:44px;color:#ffffff;line-height:1;margin-bottom:18px;">04</div>
-            <h4 style="font-family:var(--font-heading);font-weight:600;font-size:21px;margin:0 0 12px;color:#ffffff;">Livraison</h4>
+            <h3 style="font-family:var(--font-heading);font-weight:600;font-size:21px;margin:0 0 12px;color:#ffffff;">Livraison</h3>
             <p style="font-weight:300;font-size:14.5px;line-height:1.7;color:rgba(255,255,255,0.62);margin:0;">Teaser sous 10 jours, galerie photo et film finalisés sous 4 à 6 semaines selon la formule.</p>
           </div>
               </div>
@@ -577,19 +598,8 @@
           <figcaption style="font-size:11px;text-transform:uppercase;letter-spacing:0.18em;color:#767676;margin-top:auto;">Christophe et Anne Raphaelle</figcaption>
         </figure>
           </div>
-  </section>
-
-  <!-- INSTAGRAM CTA -->
-  <section style="position:relative;height:clamp(420px,55vw,620px);overflow:hidden;">
-    <div style="position:absolute;inset:0;z-index:0;">
-      <img class="slot-img" src="assets/img/instagram.webp" alt="Lancer du bouquet de la mariée, entourée de ses invitées" loading="eager" decoding="async">
-    </div>
-    <div style="position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(180deg, rgba(10,10,10,0.4) 0%, rgba(10,10,10,0.3) 40%, rgba(10,10,10,0.6) 100%);"></div>
-    <div style="position:relative;z-index:2;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 24px;">
-      <div style="font-size:12px;text-transform:uppercase;letter-spacing:0.28em;color:#ffffff;font-weight:500;margin-bottom:22px;">Sur Instagram</div>
-      <h2 style="font-family:var(--font-heading);font-weight:600;font-size:clamp(2rem,4.5vw,3.6rem);line-height:1.1;color:#ffffff;margin:0 0 24px;max-width:760px;">Tous mes conseils pour votre mariage</h2>
-      <p style="font-weight:300;font-size:16px;line-height:1.8;color:rgba(255,255,255,0.82);max-width:460px;margin:0 0 34px;">Retrouvez mes astuces, mes inspirations et mes carrousels dédiés au mariage, directement sur Instagram.</p>
-      <a href="https://www.instagram.com/perpette_wedding/" target="_blank" rel="noopener" style="border:1px solid #ffffff;background:#ffffff;color:#0a0a0a;padding:16px 34px;font-size:11.5px;text-transform:uppercase;letter-spacing:0.22em;transition:all .35s ease;" class="h4">Suivre sur Instagram</a>
+    <div data-reveal="" style="text-align:center;padding:clamp(32px,4vw,48px) clamp(24px,5vw,64px) 0;">
+      <a href="https://www.google.com/search?q=clement+mirlocca" target="_blank" rel="noopener" style="display:inline-block;font-size:11.5px;text-transform:uppercase;letter-spacing:0.22em;color:#0a0a0a;font-weight:500;border-bottom:1px solid rgba(10,10,10,0.5);padding-bottom:6px;">Voir tous mes avis Google ↗</a>
     </div>
   </section>
 
@@ -678,7 +688,7 @@
       <div data-reveal="" style="text-align:center;">
         <div style="font-size:12px;text-transform:uppercase;letter-spacing:0.28em;color:#ffffff;font-weight:500;margin-bottom:22px;">Contact</div>
         <h2 style="font-family:var(--font-heading);font-weight:600;font-size:clamp(2.2rem,4.8vw,3.8rem);line-height:1.04;color:#ffffff;margin:0 0 28px;">Parlons de<br><span style="font-weight:600;color:#ffffff;">votre mariage</span></h2>
-        <p style="font-weight:300;font-size:16px;line-height:1.8;color:rgba(255,255,255,0.7);margin:0 auto 40px;max-width:400px;">Une date, un lieu en Provence-Alpes-Côte d'Azur ? Écrivez-moi et je vous réponds sous 48 heures avec un devis détaillé.</p>
+        <p style="font-weight:300;font-size:16px;line-height:1.8;color:rgba(255,255,255,0.7);margin:0 auto 40px;max-width:400px;">Indiquez-moi votre date et votre lieu : je vous confirme ma disponibilité et vous envoie un devis détaillé sous 48h.</p>
         <div style="display:flex;flex-direction:column;align-items:center;gap:16px;">
           <a href="mailto:contact@clementmirlocca.fr" style="font-size:15px;color:#ffffff;letter-spacing:0.02em;">contact@clementmirlocca.fr</a>
           <a href="tel:+33669626972" style="font-size:15px;color:#ffffff;letter-spacing:0.02em;">06 69 62 69 72</a>
@@ -693,26 +703,71 @@
           <div style="border:1px solid rgba(255,255,255,0.35);padding:48px 36px;text-align:center;">
             <div style="font-family:var(--font-heading);font-size:44px;color:#ffffff;margin-bottom:16px;">✦</div>
             <h3 style="font-family:var(--font-heading);font-weight:600;font-size:26px;color:#ffffff;margin:0 0 12px;">Merci infiniment</h3>
-            <p style="font-weight:300;font-size:15px;line-height:1.7;color:rgba(255,255,255,0.7);margin:0;">Votre message est bien parti. Je reviens vers vous très vite.</p>
+            <p style="font-weight:300;font-size:15px;line-height:1.7;color:rgba(255,255,255,0.7);margin:0;">Votre demande est bien partie. Je vous confirme ma disponibilité et vous envoie un devis sous 48h.</p>
           </div>
 </div>
 <div id="contact-form-wrap">
           <form id="contact-form" style="display:flex;flex-direction:column;gap:20px;">
-            <input type="hidden" name="_subject" value="Nouvelle demande de contact — site mariage">
+            <input type="hidden" name="_subject" value="Nouvelle demande de devis — site mariage">
             <input type="hidden" name="_template" value="table">
+            <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
             <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;" data-form-row="">
-              <input required="" type="text" name="prenoms" placeholder="Vos prénoms" style="background:transparent;border:none;border-bottom:1px solid rgba(255,255,255,0.28);padding:14px 0;color:#ffffff;font-size:15px;font-weight:300;outline:none;transition:border-color .3s;" class="h11">
-              <input required="" type="email" name="email" placeholder="Email" style="background:transparent;border:none;border-bottom:1px solid rgba(255,255,255,0.28);padding:14px 0;color:#ffffff;font-size:15px;font-weight:300;outline:none;transition:border-color .3s;" class="h12">
+              <input required="" type="text" name="prenoms" placeholder="Vos prénoms *" autocomplete="name" style="background:transparent;border:none;border-bottom:1px solid rgba(255,255,255,0.28);padding:14px 0;color:#ffffff;font-size:15px;font-weight:300;outline:none;transition:border-color .3s;" class="contact-field">
+              <input required="" type="email" name="email" placeholder="Email *" autocomplete="email" style="background:transparent;border:none;border-bottom:1px solid rgba(255,255,255,0.28);padding:14px 0;color:#ffffff;font-size:15px;font-weight:300;outline:none;transition:border-color .3s;" class="contact-field">
             </div>
             <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;" data-form-row="">
-              <input type="text" name="date_mariage" placeholder="Date du mariage" style="background:transparent;border:none;border-bottom:1px solid rgba(255,255,255,0.28);padding:14px 0;color:#ffffff;font-size:15px;font-weight:300;outline:none;transition:border-color .3s;" class="h13">
-              <input type="text" name="lieu" placeholder="Lieu / région" style="background:transparent;border:none;border-bottom:1px solid rgba(255,255,255,0.28);padding:14px 0;color:#ffffff;font-size:15px;font-weight:300;outline:none;transition:border-color .3s;" class="h14">
+              <input required="" type="text" name="date_mariage" placeholder="Date du mariage *" style="background:transparent;border:none;border-bottom:1px solid rgba(255,255,255,0.28);padding:14px 0;color:#ffffff;font-size:15px;font-weight:300;outline:none;transition:border-color .3s;" class="contact-field">
+              <input required="" type="text" name="lieu" placeholder="Lieu de réception (ville, domaine) *" style="background:transparent;border:none;border-bottom:1px solid rgba(255,255,255,0.28);padding:14px 0;color:#ffffff;font-size:15px;font-weight:300;outline:none;transition:border-color .3s;" class="contact-field">
             </div>
-            <textarea required="" rows="4" name="message" placeholder="Parlez-moi de votre projet..." style="background:transparent;border:none;border-bottom:1px solid rgba(255,255,255,0.28);padding:14px 0;color:#ffffff;font-size:15px;font-weight:300;outline:none;resize:vertical;transition:border-color .3s;" class="h15"></textarea>
-            <button type="submit" style="margin-top:12px;align-self:flex-start;background:#ffffff;color:#0a0a0a;border:none;padding:16px 40px;font-family:var(--font-body);font-size:12px;text-transform:uppercase;letter-spacing:0.24em;font-weight:500;cursor:pointer;transition:all .35s ease;" class="h16">Envoyer ma demande</button>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;" data-form-row="">
+              <select required="" name="formule" aria-label="Formule souhaitée" style="background:transparent;border:none;border-bottom:1px solid rgba(255,255,255,0.28);padding:14px 0;color:#ffffff;font-size:15px;font-weight:300;outline:none;transition:border-color .3s;" class="contact-field is-empty">
+                <option value="" selected="">Formule souhaitée *</option>
+                <option>Reportage photo</option>
+                <option>Film de mariage</option>
+                <option>Duo photo &amp; vidéo</option>
+                <option>Je ne sais pas encore</option>
+              </select>
+              <input type="tel" name="telephone" placeholder="Téléphone (optionnel)" autocomplete="tel" style="background:transparent;border:none;border-bottom:1px solid rgba(255,255,255,0.28);padding:14px 0;color:#ffffff;font-size:15px;font-weight:300;outline:none;transition:border-color .3s;" class="contact-field">
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;" data-form-row="">
+              <select name="invites" aria-label="Nombre d'invités" style="background:transparent;border:none;border-bottom:1px solid rgba(255,255,255,0.28);padding:14px 0;color:#ffffff;font-size:15px;font-weight:300;outline:none;transition:border-color .3s;" class="contact-field is-empty">
+                <option value="" selected="">Nombre d'invités (environ)</option>
+                <option>Moins de 50</option>
+                <option>50 à 100</option>
+                <option>100 à 150</option>
+                <option>Plus de 150</option>
+              </select>
+              <select name="budget" aria-label="Budget envisagé" style="background:transparent;border:none;border-bottom:1px solid rgba(255,255,255,0.28);padding:14px 0;color:#ffffff;font-size:15px;font-weight:300;outline:none;transition:border-color .3s;" class="contact-field is-empty">
+                <option value="" selected="">Budget envisagé</option>
+                <option>Moins de 1 500 €</option>
+                <option>1 500 à 2 500 €</option>
+                <option>2 500 à 3 500 €</option>
+                <option>Plus de 3 500 €</option>
+                <option>Je ne sais pas encore</option>
+              </select>
+            </div>
+            <textarea required="" rows="4" name="message" placeholder="Parlez-moi de votre journée : déroulé, lieux, ce qui compte pour vous..." style="background:transparent;border:none;border-bottom:1px solid rgba(255,255,255,0.28);padding:14px 0;color:#ffffff;font-size:15px;font-weight:300;outline:none;transition:border-color .3s;resize:vertical;" class="contact-field"></textarea>
+            <div style="display:flex;align-items:center;gap:20px;flex-wrap:wrap;margin-top:12px;">
+              <button type="submit" style="background:#ffffff;color:#0a0a0a;border:none;padding:16px 40px;font-family:var(--font-body);font-size:12px;text-transform:uppercase;letter-spacing:0.24em;font-weight:500;cursor:pointer;transition:all .35s ease;" class="h16">Envoyer ma demande</button>
+              <span style="font-weight:300;font-size:12.5px;color:rgba(255,255,255,0.55);">Réponse sous 48h · sans engagement</span>
+            </div>
           </form>
 </div>
       </div>
+    </div>
+  </section>
+
+  <!-- INSTAGRAM CTA -->
+  <section style="position:relative;height:clamp(420px,55vw,620px);overflow:hidden;">
+    <div style="position:absolute;inset:0;z-index:0;">
+      <img class="slot-img" src="assets/img/instagram.webp" alt="Lancer du bouquet de la mariée, entourée de ses invitées" loading="lazy" decoding="async">
+    </div>
+    <div style="position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(180deg, rgba(10,10,10,0.4) 0%, rgba(10,10,10,0.3) 40%, rgba(10,10,10,0.6) 100%);"></div>
+    <div style="position:relative;z-index:2;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 24px;">
+      <div style="font-size:12px;text-transform:uppercase;letter-spacing:0.28em;color:#ffffff;font-weight:500;margin-bottom:22px;">Sur Instagram</div>
+      <h2 style="font-family:var(--font-heading);font-weight:600;font-size:clamp(2rem,4.5vw,3.6rem);line-height:1.1;color:#ffffff;margin:0 0 24px;max-width:760px;">Tous mes conseils pour votre mariage</h2>
+      <p style="font-weight:300;font-size:16px;line-height:1.8;color:rgba(255,255,255,0.82);max-width:460px;margin:0 0 34px;">Retrouvez mes astuces, mes inspirations et mes carrousels dédiés au mariage, directement sur Instagram.</p>
+      <a href="https://www.instagram.com/perpette_wedding/" target="_blank" rel="noopener" style="border:1px solid #ffffff;background:#ffffff;color:#0a0a0a;padding:16px 34px;font-size:11.5px;text-transform:uppercase;letter-spacing:0.22em;transition:all .35s ease;" class="h4">Suivre sur Instagram</a>
     </div>
   </section>
 
@@ -805,15 +860,6 @@
     });
   });
 
-  /* ---- video du film ---- */
-  var filmFrame = document.getElementById('film-frame');
-  var filmPlay = document.getElementById('film-play');
-  if (filmFrame && filmPlay) {
-    filmPlay.addEventListener('click', function () {
-      filmFrame.innerHTML = '<iframe src="https://www.youtube.com/embed/HgUfXMNPcDk?autoplay=1&rel=0" title="Film de mariage" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position:absolute;inset:0;width:100%;height:100%;"></iframe>';
-    });
-  }
-
   /* ---- bandeau cookies ---- */
   var banner = document.getElementById('cookie-banner');
   function showBanner() { if (banner) banner.hidden = false; }
@@ -833,6 +879,13 @@
     hideBanner();
   });
   if (reopen) reopen.addEventListener('click', function (e) { e.preventDefault(); showBanner(); });
+
+  /* ---- formulaire qualifiant : couleur "placeholder" des listes tant qu'aucune valeur n'est choisie ---- */
+  Array.prototype.forEach.call(document.querySelectorAll('select.contact-field'), function (sel) {
+    function sync() { sel.classList.toggle('is-empty', !sel.value); }
+    sel.addEventListener('change', sync);
+    sync();
+  });
 
   /* ---- formulaire de contact ---- */
   var form = document.getElementById('contact-form');
